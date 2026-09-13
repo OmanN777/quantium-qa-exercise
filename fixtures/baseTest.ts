@@ -7,6 +7,13 @@ import { ScrollbarsPage } from '../pages/topics/ScrollbarsPage';
 import { DynamicTablePage } from '../pages/topics/DynamicTablePage';
 import { ProgressBarPage } from '../pages/topics/ProgressBarPage';
 import { VisibilityPage } from '../pages/topics/VisibilityPage';
+import { OverlappedElementPage } from '../pages/topics/OverlappedElementPage';
+import { ShadowDomPage } from '../pages/topics/ShadowDomPage';
+import { FileUploadPage } from '../pages/topics/FileUploadPage';
+import { MysteryButtonPage } from '../pages/topics/MysteryButtonPage';
+import { DisabledInputPage } from '../pages/topics/DisabledInputPage';
+import { ChartInteractionPage } from '../pages/topics/ChartInteractionPage';
+import { AutoWaitPage } from '../pages/topics/AutoWaitPage';
 
 type TestFixtures = {
   loginPage: LoginPage;
@@ -17,6 +24,13 @@ type TestFixtures = {
   dynamicTablePage: DynamicTablePage;
   progressBarPage: ProgressBarPage;
   visibilityPage: VisibilityPage;
+  overlappedElementPage: OverlappedElementPage;
+  shadowDomPage: ShadowDomPage;
+  fileUploadPage: FileUploadPage;
+  mysteryButtonPage: MysteryButtonPage;
+  disabledInputPage: DisabledInputPage;
+  chartInteractionPage: ChartInteractionPage;
+  autoWaitPage: AutoWaitPage;
 };
 
 export const test = base.extend<TestFixtures>({
@@ -50,6 +64,27 @@ export const test = base.extend<TestFixtures>({
   },
   visibilityPage: async ({ page }, use) => {
     await use(new VisibilityPage(page));
+  },
+  overlappedElementPage: async ({ page }, use) => {
+    await use(new OverlappedElementPage(page));
+  },
+  shadowDomPage: async ({ page }, use) => {
+    await use(new ShadowDomPage(page));
+  },
+  fileUploadPage: async ({ page }, use) => {
+    await use(new FileUploadPage(page));
+  },
+  mysteryButtonPage: async ({ page }, use) => {
+    await use(new MysteryButtonPage(page));
+  },
+  disabledInputPage: async ({ page }, use) => {
+    await use(new DisabledInputPage(page));
+  },
+  chartInteractionPage: async ({ page }, use) => {
+    await use(new ChartInteractionPage(page));
+  },
+  autoWaitPage: async ({ page }, use) => {
+    await use(new AutoWaitPage(page));
   },
 });
 
