@@ -1,0 +1,16 @@
+{
+  "name": "quantium-qa-automation",
+  "version": "1.0.0",
+  "description": "Quantium Technology - QA Automation Take-Home Assessment (14 UI Test Automation Challenges)",
+  "author": "Natawat Tephassadin na Ayutaya (Namo)",
+  "scripts": {
+    "test": "playwright test",
+    "test:headed": "playwright test --headed",
+    "test:report": "playwright show-report"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.63.0",
+    "@types/node": "^22.0.0",
+    "typescript": "^5.0.0"
+  }
+}
