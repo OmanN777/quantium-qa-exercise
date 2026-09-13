@@ -1,0 +1,56 @@
+import { test as base, expect } from '@playwright/test';
+import { LoginPage } from '../pages/LoginPage';
+import { TextInputPage } from '../pages/topics/TextInputPage';
+import { ClientSideDelayPage } from '../pages/topics/ClientSideDelayPage';
+import { AjaxDataPage } from '../pages/topics/AjaxDataPage';
+import { ScrollbarsPage } from '../pages/topics/ScrollbarsPage';
+import { DynamicTablePage } from '../pages/topics/DynamicTablePage';
+import { ProgressBarPage } from '../pages/topics/ProgressBarPage';
+import { VisibilityPage } from '../pages/topics/VisibilityPage';
+
+type TestFixtures = {
+  loginPage: LoginPage;
+  textInputPage: TextInputPage;
+  clientSideDelayPage: ClientSideDelayPage;
+  ajaxDataPage: AjaxDataPage;
+  scrollbarsPage: ScrollbarsPage;
+  dynamicTablePage: DynamicTablePage;
+  progressBarPage: ProgressBarPage;
+  visibilityPage: VisibilityPage;
+};
+
+export const test = base.extend<TestFixtures>({
+  context: async ({ context }, use) => {
+    // Authenticate session via initial script injection
+    await context.addInitScript(() => {
+      sessionStorage.setItem('qa.user', 'Candidate');
+    });
+    await use(context);
+  },
+  loginPage: async ({ page }, use) => {
+    await use(new LoginPage(page));
+  },
+  textInputPage: async ({ page }, use) => {
+    await use(new TextInputPage(page));
+  },
+  clientSideDelayPage: async ({ page }, use) => {
+    await use(new ClientSideDelayPage(page));
+  },
+  ajaxDataPage: async ({ page }, use) => {
+    await use(new AjaxDataPage(page));
+  },
+  scrollbarsPage: async ({ page }, use) => {
+    await use(new ScrollbarsPage(page));
+  },
+  dynamicTablePage: async ({ page }, use) => {
+    await use(new DynamicTablePage(page));
+  },
+  progressBarPage: async ({ page }, use) => {
+    await use(new ProgressBarPage(page));
+  },
+  visibilityPage: async ({ page }, use) => {
+    await use(new VisibilityPage(page));
+  },
+});
+
+export { expect };
